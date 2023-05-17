@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Python Flight Price Predictor project aims to learn price trends from historical flight ticket prices and make predictions about future ticket prices. Flight prices are time series data, where the prices may be influenced by previous time points or even older information. The goal is to forecast the ticket prices based on historical data and various forecasting models.
+This Python Flight Ticket Price Forecaster project aims to learn price trends from historical flight ticket prices and make predictions about future ticket prices. Flight prices are time series data, where the prices may be influenced by previous time points or even older information. The goal is to forecast the ticket prices based on historical data and various forecasting models.
 
 The project utilizes models designed for time series analysis such as skforecast and Prophet. Additionally, it explores the use of deep learning techniques for predicting flight ticket prices.
 
