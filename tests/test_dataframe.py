@@ -21,15 +21,15 @@ class Test_mask_rows:
     def test_mask(self, df):
         mask = mask_rows(df, {0: (0, 4), 1: (11, 13)})
         assert (mask == np.array([True, True, False, True, True])).all()
-    
+
     def test_mask_exclude(self, df):
         mask = mask_rows(df, {0: (0, 4), 1: (11, 13)}, exclude=True)
         assert (mask == ~np.array([True, True, False, True, True])).all()
-    
+
     def test_return_df(self, df):
         mask = mask_rows(df, {0: (0, 4), 1: (11, 13)})
         df_masked = mask_rows(df, {0: (0, 4), 1: (11, 13)}, return_df=True)
-        assert (df_masked == df[mask]).values.all()
+        pd.testing.assert_frame_equal(df[mask], df_masked)
 
 class Test_unique_values:
     @pytest.fixture()
@@ -38,9 +38,10 @@ class Test_unique_values:
         indeces = np.random.randint(10, size=5)
         df = pd.DataFrame({i: np.random.randint(10, size=3) for i in indeces})
         return df
-    
+
     def test_unique_values(self, df):
         num_unique = unique_values(df)
-        assert isinstance(num_unique, pd.Series)
-        assert (num_unique.index == np.array([6, 3, 7, 4])).all()
-        assert (num_unique.values == np.array([3, 3, 2, 3])).all()
+        pd.testing.assert_series_equal(
+            num_unique,
+            pd.Series([3, 3, 2, 3], index=[6, 3, 7, 4])
+        )
