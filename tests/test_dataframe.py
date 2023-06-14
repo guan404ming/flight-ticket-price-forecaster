@@ -35,8 +35,8 @@ class Test_unique_values:
     @pytest.fixture()
     def df(self):
         np.random.seed(42)
-        indeces = np.random.randint(10, size=5)
-        df = pd.DataFrame({i: np.random.randint(10, size=3) for i in indeces})
+        indices = np.random.randint(10, size=5)
+        df = pd.DataFrame({i: np.random.randint(10, size=3) for i in indices})
         return df
 
     def test_unique_values(self, df):
